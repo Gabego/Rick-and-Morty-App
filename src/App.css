@@ -2,6 +2,17 @@
     max-width: 1320px;
     margin-left: auto;
     margin-right: auto;
+    /* display: flex;
+    flex-direction: row; */
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: 300px auto ;
+}
+.img__header {
+    grid-column: 1/3;
+    grid-row: 1/2;
+    background-image: url("../fondo02.jpg");
+    background-repeat:no-repeat;
 }
 
 .card-container {
@@ -9,4 +20,17 @@
     gap: 30px;
     justify-content: center;
     flex-wrap: wrap;
+}
+   
+.information>h2 {
+    text-align: center;
+}
+
+.information__data {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    row-gap: 20px;
+}
+.information__data>li {
+   margin: 40px;
 }

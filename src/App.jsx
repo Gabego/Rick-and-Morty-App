@@ -59,41 +59,50 @@ function App() {
 
   return (
     <div className="App">
+      <div className="img__header"></div>
+      <div className="search_box">
+        <h1>Rick and Morty</h1>
+        <form onSubmit={handleSubmit}>
+          <input
+            id='idLocation'
+            placeholder='Enter number from 1 to 126'
+            type="text"
+            onChange={handleChange} />
+          <button>Seacrh</button>
+          <FilterList
+            suggestedList={suggestedList}
+            setSearchInput={setSearchInput} />
 
-      <h1>Rick and Morty</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          id='idLocation'
-          placeholder='Enter number from 1 to 126'
-          type="text"
-          onChange={handleChange} />
-        <button>Seacrh</button>
-        <FilterList
-          suggestedList={suggestedList}
-          setSearchInput={setSearchInput} />
+        </form>
 
-      </form>
+      </div>
+      <div className="cards_box">
+        {hasError ?
+          <ErrorScreen />
+          :
+          <>
+            
+            <LocationInfo location={location} />
+            <div className='card-container'>
+              {
+                location?.residents.map(url => (
+                  <CarResident
+                    key={url}
+                    url={url}
+                  />
+                ))
+
+              }
+            </div>
+          </>
+
+        }
+
+      </div>
 
 
-      {hasError ?
-        <ErrorScreen />
-        :
-        <>
-          <LocationInfo location={location} />
-          <div className='card-container'>
-            {
-              location?.residents.map(url => (
-                <CarResident
-                  key={url}
-                  url={url}
-                />
-              ))
 
-            }
-          </div>
-        </>
 
-      }
 
 
     </div>
